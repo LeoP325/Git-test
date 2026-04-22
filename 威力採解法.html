@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PowerBall other two methods</title>
+</head>
+
+<body>
+  <script>
+    const rand = (min, max) => {
+      return Math.round(Math.random() * (max - min)) + min
+    }
+
+    const groupA = []
+
+
+    // for (let i = 0; i < 6; i++) {
+    //   const num = rand(1, 38)
+    //   if (!groupA.includes(num)) groupA.push(num)
+    //   else i--
+    // }
+
+
+
+    //第三種
+    // 建立 1~38 的數字陣列
+
+    // Array建一個空陣列
+    const numbers = Array.from({ length: 38 }, (value, index) => {
+      return index + 1
+    })
+    // 取6次
+    for (let i = 0; i < 6; i++) {
+      const index = rand(0, numbers.length - 1)
+      groupA.push(numbers[index])
+      numbers.splice(index, 1)
+    }
+
+    document.write(groupA.sort((a, b) => { return a - b }).join(' ') + '<br>' + rand(1, 8))
+  </script>
+</body>
+
+</html>
